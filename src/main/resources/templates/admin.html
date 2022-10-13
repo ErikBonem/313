@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Администратор</title>
+</head>
+<body>
+<table class="table">
+    <thead>
+    <tr>
+        <th scope="col">#</th>
+        <th scope="col">Name</th>
+        <th scope="col">Age</th>
+        <th scope="col">Email</th>
+        <th scope="col">Role</th>
+        <th scope="col"></th>
+        <th scope="col"></th>
+    </tr>
+    </thead>
+    <tbody class="table-group-divider">
+    <tr th:each="us : ${users}">
+
+        <td th:text="${us.id}"/>
+        <td th:text="${us.getUsername()}"/>
+        <td th:text="${us.getAge()}"/>
+        <td th:text="${us.getEmail()}"/>
+        <td th:text="${us.getRoles()}"/>
+        <td > <form th:method="DELETE" th:action="@{/admin/{id}(id=${us.getId()})}">
+            <input type="submit" value="Delete"/>
+        </form>
+        </td>
+        <td> <a th:href="'admin/edit/' + ${us.id}">Изменить</a> </td>
+    </tr>
+    </tbody>
+</table>
+<br>
+<a th:href="@{'admin/new/'}">Добавить пользователя</a>
+<a th:href="@{'admin/logout/'}">Выход</a>
+<br>
+</body>
+</html>
