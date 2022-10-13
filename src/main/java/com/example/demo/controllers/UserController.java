@@ -13,12 +13,11 @@ import javax.servlet.http.HttpServletRequest;
 
 @Controller
 public class UserController {
-    private UserService userService;
+    private final UserService userService;
     @Autowired
     public UserController(UserService userService) {
         this.userService = userService;
     }
-
 
     @RequestMapping("/user")
     public String show(Model model) {

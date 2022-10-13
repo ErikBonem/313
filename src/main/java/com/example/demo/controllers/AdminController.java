@@ -2,7 +2,6 @@ package com.example.demo.controllers;
 
 import com.example.demo.entities.Role;
 import com.example.demo.entities.User;
-import com.example.demo.repositories.RoleRepository;
 import com.example.demo.services.RoleService;
 import com.example.demo.services.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -20,9 +19,8 @@ import java.util.Set;
 @Controller
 @RequestMapping("/admin")
 public class AdminController {
-
-private UserService us;
-private RoleService rs;
+private final UserService us;
+private final RoleService rs;
     @Autowired
     public AdminController(UserService us, RoleService rs) {
         this.us = us;
@@ -56,7 +54,7 @@ private RoleService rs;
     }
 
     @PatchMapping("/{id}")
-    public String update(@ModelAttribute("user") User user, @ModelAttribute("role") String role, @PathVariable("id") Long id){
+    public String update(@ModelAttribute("user") User user, @ModelAttribute("role") String role){
         us.save(user);
         return "redirect:/admin";
     }

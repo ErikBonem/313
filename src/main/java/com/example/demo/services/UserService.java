@@ -45,7 +45,6 @@ public class UserService implements UserDetailsService {
         return roles.stream().map(r -> new SimpleGrantedAuthority(r.getName())).collect(Collectors.toList());
     }
 
-    //////////////////////////////////////////////////////////////////////////
     public User getById(Long id) { return userRepository.getById(id); }
     public void save(User user /*,String role*/) {
         Set<Role> userRole = new HashSet<>();
