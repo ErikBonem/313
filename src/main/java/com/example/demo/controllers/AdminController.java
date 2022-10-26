@@ -30,6 +30,7 @@ private final RoleService rs;
         @GetMapping()
         public String index(Model model){
             model.addAttribute("users", us.findAll());
+            model.addAttribute("user", us.getAuthUser());
             return "admin";
         }
     @GetMapping(value = "/new")

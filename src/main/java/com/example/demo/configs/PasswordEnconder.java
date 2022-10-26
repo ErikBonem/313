@@ -1,7 +1,6 @@
 package com.example.demo.configs;
 
 import org.springframework.security.crypto.password.PasswordEncoder;
-
 public class PasswordEnconder implements PasswordEncoder {
     @Override
     public String encode(CharSequence charSequence) {

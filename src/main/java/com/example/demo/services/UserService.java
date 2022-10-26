@@ -46,6 +46,7 @@ public class UserService implements UserDetailsService {
     }
 
     public User getById(Long id) { return userRepository.getById(id); }
+    @Transactional
     public void save(User user /*,String role*/) {
         Set<Role> userRole = new HashSet<>();
         Role u = new Role(2L, "ROLE_USER");
@@ -53,7 +54,7 @@ public class UserService implements UserDetailsService {
         user.setRoles(userRole);
         userRepository.save(user);
     }
-
+    @Transactional
     public void deleteById(Long id) {
         userRepository.deleteById(id);
     }
